@@ -4766,11 +4766,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pedro.dantas\\source\\repos\\DesafioRestApi\\DesafioRestApi\\DesafioRestApi.csproj",
+      "projectUniqueName": "C:\\Users\\pedro.dantas\\source\\repos\\book-api\\DesafioRestApi\\DesafioRestApi.csproj",
       "projectName": "DesafioRestApi",
-      "projectPath": "C:\\Users\\pedro.dantas\\source\\repos\\DesafioRestApi\\DesafioRestApi\\DesafioRestApi.csproj",
+      "projectPath": "C:\\Users\\pedro.dantas\\source\\repos\\book-api\\DesafioRestApi\\DesafioRestApi.csproj",
       "packagesPath": "C:\\Users\\pedro.dantas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pedro.dantas\\source\\repos\\DesafioRestApi\\DesafioRestApi\\obj\\",
+      "outputPath": "C:\\Users\\pedro.dantas\\source\\repos\\book-api\\DesafioRestApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

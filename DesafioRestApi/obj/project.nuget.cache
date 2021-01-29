@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Pa1NyJMidpXogA84GtVXpM8pYH4l2RTk5RmGzh6ee0LiwLytU5HMBuXuunFzCwGOaBEjjW57IkL8dnxa/w62Ow==",
+  "dgSpecHash": "J5okadMgK90w+Fz5tuV2IiyS985iHTjkH+XSexVzUs0Y4Ln342ATSE5OMVWZtku2lA8arxdAYJlCHEMQkKo1gw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pedro.dantas\\source\\repos\\DesafioRestApi\\DesafioRestApi\\DesafioRestApi.csproj",
+  "projectFilePath": "C:\\Users\\pedro.dantas\\source\\repos\\book-api\\DesafioRestApi\\DesafioRestApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pedro.dantas\\.nuget\\packages\\dnsclient\\1.3.1\\dnsclient.1.3.1.nupkg.sha512",
     "C:\\Users\\pedro.dantas\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
