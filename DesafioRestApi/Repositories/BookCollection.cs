@@ -1,7 +1,5 @@
 ﻿using DesafioRestApi.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -10,11 +8,12 @@ namespace DesafioRestApi.Repositories
 {
     public class BookCollection : IBookCollection
     {
-        private MongoDBRepository _repository = new MongoDBRepository();
-        private IMongoCollection<Book> _collection;
+        private readonly MongoDBRepository _repository; 
+        private readonly IMongoCollection<Book> _collection;
 
         public BookCollection()
         {
+            _repository = new MongoDBRepository();
             _collection = _repository.database.GetCollection<Book>("Books");
         }
 
@@ -34,9 +33,6 @@ namespace DesafioRestApi.Repositories
             var filter = Builders<Book>.Filter.Eq(x => x.Id, id);
 
             return await _collection.FindAsync(filter).Result.FirstAsync();
-
-            //return await _collection.FindAsync(
-            //   new BsonDocument{{"_id", id} }).Result.FirstAsync();
         }
 
         public async Task InsertBook(Book book)

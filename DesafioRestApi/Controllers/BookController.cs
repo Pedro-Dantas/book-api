@@ -9,8 +9,12 @@ namespace DesafioRestApi.Controllers
     [ApiController]
     public class BookController : Controller
     {
-        // TODO: Implementar Injeção de Dependência
-        private IBookCollection _database = new BookCollection();
+        private readonly IBookCollection _database;
+
+        public BookController(IBookCollection database)
+        {
+            _database = database;
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
