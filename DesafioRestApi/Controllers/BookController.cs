@@ -2,6 +2,8 @@
 using DesafioRestApi.Model;
 using DesafioRestApi.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace DesafioRestApi.Controllers
 {
@@ -10,73 +12,128 @@ namespace DesafioRestApi.Controllers
     public class BookController : Controller
     {
         private readonly IBookCollection _database;
+        private readonly ILogger<BookController> _logger;
 
-        public BookController(IBookCollection database)
+        public BookController(IBookCollection database, ILogger<BookController> logger)
         {
             _database = database;
+            _logger = logger;
         }
 
         /// <summary>Obter todos os livros cadastrados</summary>
         /// <response code="200">Todos os livros foram retornados com sucesso!</response>>
+        /// <response code="500">Ocorreu um erro!</response>>
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
-            return Ok(await _database.GetAllBooks());
+            try
+            {
+                _logger.LogInformation("Request info GetAllBooks");
+                return Ok(await _database.GetAllBooks());
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception.Message);
+                return new StatusCodeResult(500);
+            }      
         }
 
         ///<summary>Obter um livro cadastrado por ID</summary>
         /// <response code="200">Livro achado!</response>>
+        /// <response code="500">Ocorreu um erro!</response>>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookDetails(string id)
         {
-            return Ok(await _database.GetBookById(id));
+            try
+            {
+                _logger.LogInformation("Request info GetBookDetails");
+                return Ok(await _database.GetBookById(id));
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception.Message);
+                return new StatusCodeResult(500);
+            }
+
         }
 
         ///<summary>Adicionar um livro</summary>
         /// <response code="201">Livro criado!</response>>
+        /// <response code="500">Ocorreu um erro!</response>>
+        /// <response code="400">Ocorreu um erro no corpo da requisição! Verifique os campos.</response>>
         [HttpPost]
         public async Task<IActionResult> CreateBook([FromBody] Book book)
         {
-            if(book == null) { return BadRequest(); }
-
-            if(book.Autor == string.Empty)
+            try
             {
-                ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
+                _logger.LogInformation("Request info CreateBook");
+
+                if (book == null) { return BadRequest(); }
+
+                if (book.Autor == string.Empty)
+                {
+                    ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
+                }
+
+                await _database.InsertBook(book);
+
+                return Created("Criado", true);
             }
-
-            await _database.InsertBook(book);
-
-            return Created("Criado", true);
+            catch (Exception exception)
+            {
+                _logger.LogError(exception.Message);
+                return new StatusCodeResult(500);
+            }
         }
 
         ///<summary>Atualizar um livro</summary>
         /// <response code="201">Livro atualizado com sucesso!</response>>
         /// <response code="400">Erro ao atualizar um livro!</response>>
+        /// <response code="500">Ocorreu um erro!</response>> 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook([FromBody] Book book, string id)
         {
-            if (book == null) { return BadRequest(); }
-
-            if (book.Autor == string.Empty)
+            try
             {
-                ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
+                _logger.LogInformation("Request info UpdateBook");
+                if (book == null) { return BadRequest(); }
+
+                if (book.Autor == string.Empty)
+                {
+                    ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
+                }
+
+                book.Id = id;
+
+                await _database.UpdateBook(book);
+
+                return Created("Criado", true);
             }
-
-            book.Id = id;
-
-            await _database.UpdateBook(book);
-
-            return Created("Criado", true);
+            catch (Exception exception)
+            {
+                _logger.LogError(exception.Message);
+                return new StatusCodeResult(500);
+            }
         }
 
         ///<summary>Deletar um livro</summary>
         /// <response code="204">Livro deletado com sucesso!</response>>
+        /// <response code="500">Ocorreu um erro!</response>>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(string id)
         {
-            await _database.DeleteBook(id);
+            try
+            {
+                _logger.LogInformation("Request info DeleteBook");
+                await _database.DeleteBook(id);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception.Message);
+                return new StatusCodeResult(500);
+            }
         }
     }
 }
