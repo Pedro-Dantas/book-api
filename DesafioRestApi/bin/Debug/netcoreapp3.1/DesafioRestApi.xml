@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DesafioRestApi</name>
+    </assembly>
+    <members>
+        <member name="M:DesafioRestApi.Controllers.BookController.GetAllBooks">
+            <summary>Obter todos os livros cadastrados</summary>
+            <response code="200">Todos os livros foram retornados com sucesso!</response>>
+        </member>
+        <member name="M:DesafioRestApi.Controllers.BookController.GetBookDetails(System.String)">
+            <summary>Obter um livro cadastrado por ID</summary>
+             <response code="200">Livro achado!</response>>
+        </member>
+        <member name="M:DesafioRestApi.Controllers.BookController.CreateBook(DesafioRestApi.Model.Book)">
+            <summary>Adicionar um livro</summary>
+             <response code="201">Livro criado!</response>>
+        </member>
+        <member name="M:DesafioRestApi.Controllers.BookController.UpdateBook(DesafioRestApi.Model.Book,System.String)">
+            <summary>Atualizar um livro</summary>
+             <response code="201">Livro atualizado com sucesso!</response>>
+             <response code="400">Erro ao atualizar um livro!</response>>
+        </member>
+        <member name="M:DesafioRestApi.Controllers.BookController.DeleteBook(System.String)">
+            <summary>Deletar um livro</summary>
+             <response code="204">Livro deletado com sucesso!</response>>
+        </member>
+    </members>
+</doc>

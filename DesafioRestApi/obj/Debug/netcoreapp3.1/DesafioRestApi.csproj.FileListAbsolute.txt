@@ -49,8 +49,6 @@ C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.csprojAssemblyReference.cache
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.AssemblyInfoInputs.cache
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.AssemblyInfo.cs
-C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.csproj.CoreCompileInputs.cache
-C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.RazorTargetAssemblyInfo.cache
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.csproj.CopyComplete
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\staticwebassets\DesafioRestApi.StaticWebAssets.Manifest.cache
@@ -58,3 +56,12 @@ C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.dll
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.pdb
 C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.genruntimeconfig.cache
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.csproj.CoreCompileInputs.cache
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\bin\Debug\netcoreapp3.1\DesafioRestApi.xml
+C:\Users\pedro.dantas\source\repos\book-api\DesafioRestApi\obj\Debug\netcoreapp3.1\DesafioRestApi.xml

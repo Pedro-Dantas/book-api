@@ -16,18 +16,24 @@ namespace DesafioRestApi.Controllers
             _database = database;
         }
 
+        /// <summary>Obter todos os livros cadastrados</summary>
+        /// <response code="200">Todos os livros foram retornados com sucesso!</response>>
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
             return Ok(await _database.GetAllBooks());
         }
 
+        ///<summary>Obter um livro cadastrado por ID</summary>
+        /// <response code="200">Livro achado!</response>>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookDetails(string id)
         {
             return Ok(await _database.GetBookById(id));
         }
 
+        ///<summary>Adicionar um livro</summary>
+        /// <response code="201">Livro criado!</response>>
         [HttpPost]
         public async Task<IActionResult> CreateBook([FromBody] Book book)
         {
@@ -43,6 +49,9 @@ namespace DesafioRestApi.Controllers
             return Created("Criado", true);
         }
 
+        ///<summary>Atualizar um livro</summary>
+        /// <response code="201">Livro atualizado com sucesso!</response>>
+        /// <response code="400">Erro ao atualizar um livro!</response>>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook([FromBody] Book book, string id)
         {
@@ -60,6 +69,8 @@ namespace DesafioRestApi.Controllers
             return Created("Criado", true);
         }
 
+        ///<summary>Deletar um livro</summary>
+        /// <response code="204">Livro deletado com sucesso!</response>>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(string id)
         {
