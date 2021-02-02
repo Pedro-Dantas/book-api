@@ -36,7 +36,6 @@ namespace DesafioRestApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
-
             });
 
             services.AddSingleton<IBookCollection, BookCollection>();

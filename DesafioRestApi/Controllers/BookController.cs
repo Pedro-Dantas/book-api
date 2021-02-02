@@ -40,7 +40,7 @@ namespace DesafioRestApi.Controllers
 
         ///<summary>Obter um livro cadastrado por ID</summary>
         /// <response code="200">Livro achado!</response>>
-        /// <response code="500">Ocorreu um erro!</response>>
+        /// <response code="404">O livro procurado não existe!</response>>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBookDetails(string id)
         {
@@ -52,9 +52,8 @@ namespace DesafioRestApi.Controllers
             catch (Exception exception)
             {
                 _logger.LogError(exception.Message);
-                return new StatusCodeResult(500);
+                return new StatusCodeResult(404);
             }
-
         }
 
         ///<summary>Adicionar um livro</summary>
@@ -70,11 +69,6 @@ namespace DesafioRestApi.Controllers
 
                 if (book == null) { return BadRequest(); }
 
-                if (book.Autor == string.Empty)
-                {
-                    ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
-                }
-
                 await _database.InsertBook(book);
 
                 return Created("Criado", true);
@@ -89,7 +83,7 @@ namespace DesafioRestApi.Controllers
         ///<summary>Atualizar um livro</summary>
         /// <response code="201">Livro atualizado com sucesso!</response>>
         /// <response code="400">Erro ao atualizar um livro!</response>>
-        /// <response code="500">Ocorreu um erro!</response>> 
+        /// <response code="404">O livro a ser atualizado não existe!</response>>
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBook([FromBody] Book book, string id)
         {
@@ -98,27 +92,22 @@ namespace DesafioRestApi.Controllers
                 _logger.LogInformation("Request info UpdateBook");
                 if (book == null) { return BadRequest(); }
 
-                if (book.Autor == string.Empty)
-                {
-                    ModelState.AddModelError("Nome", "O nome do livro não pode estar vazio!");
-                }
-
                 book.Id = id;
 
                 await _database.UpdateBook(book);
 
-                return Created("Criado", true);
+                return Ok(true);
             }
             catch (Exception exception)
             {
                 _logger.LogError(exception.Message);
-                return new StatusCodeResult(500);
+                return new StatusCodeResult(404);
             }
         }
 
         ///<summary>Deletar um livro</summary>
         /// <response code="204">Livro deletado com sucesso!</response>>
-        /// <response code="500">Ocorreu um erro!</response>>
+        /// <response code="404">O livro deletado não existe!</response>>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(string id)
         {
@@ -132,7 +121,7 @@ namespace DesafioRestApi.Controllers
             catch (Exception exception)
             {
                 _logger.LogError(exception.Message);
-                return new StatusCodeResult(500);
+                return new StatusCodeResult(404);
             }
         }
     }
