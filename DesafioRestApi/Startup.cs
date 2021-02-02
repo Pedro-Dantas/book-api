@@ -38,9 +38,9 @@ namespace DesafioRestApi
                 c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
             });
 
-            services.AddSingleton<IBookCollection, BookCollection>();
+            services.AddScoped<IBookCollection, BookCollection>();
         }
-
+          
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
