@@ -1,3 +1,5 @@
-DesafioRestApi/bin/
-DesafioRestApi/obj/
+*.user
+*.suo
 *.json
+book-api\DesafioRestApi\bin\
+book-api\DesafioRestApi\obj\
