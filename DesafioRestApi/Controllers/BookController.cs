@@ -14,11 +14,15 @@ namespace DesafioRestApi.Controllers
         private readonly IBookCollection _database;
         private readonly ILogger<BookController> _logger;
 
-        public BookController(IBookCollection database, ILogger<BookController> logger)
+        public BookController(
+            IBookCollection database, 
+            ILogger<BookController> logger)
         {
             _database = database;
             _logger = logger;
         }
+        
+        //TODO: Implementar o notification pattern e fluent validation nos endpoints
 
         /// <summary>Obter todos os livros cadastrados</summary>
         /// <response code="200">Todos os livros foram retornados com sucesso!</response>>
@@ -124,5 +128,7 @@ namespace DesafioRestApi.Controllers
                 return new StatusCodeResult(404);
             }
         }
+
+        // TODO: Criar o patch, atualizando alguns campo não o livro todo.
     }
 }

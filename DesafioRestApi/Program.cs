@@ -1,8 +1,9 @@
-using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
+using System;
 
 namespace DesafioRestApi
 {
@@ -10,13 +11,13 @@ namespace DesafioRestApi
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .WriteTo.MongoDB("mongodb://localhost:27017/Library", collectionName:"apilogs")
-            .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //.MinimumLevel.Debug()
+            //.MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            //.Enrich.FromLogContext()
+            //.WriteTo.Console()
+            //.WriteTo.MongoDB("mongodb://localhost:27017/Library", collectionName:"apilogs")
+            //.CreateLogger();
 
             try
             {
@@ -35,6 +36,18 @@ namespace DesafioRestApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                    .Enrich.FromLogContext()
+                    .WriteTo.Console()
+                    .WriteTo.MongoDB(settings.GetConnectionString("ConnectionStringWriteMongoDB"),
+                        collectionName: settings.GetConnectionString("CollectionLog"))
+                    .CreateLogger();
+                }) 
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

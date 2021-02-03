@@ -1,18 +1,27 @@
-﻿using MongoDB.Driver;
+﻿using DesafioRestApi.Model;
+using Microsoft.Extensions.Configuration;
+using MongoDB.Driver;
 
 namespace DesafioRestApi.Repositories
 {
-    public class MongoDBRepository
+    public class MongoDBRepository : IMongoDBRepository
     {
-        public const string _uri = "mongodb://localhost:27017";
-        public const string _nameDatabase = "Library";
         public readonly IMongoClient client;
         public readonly IMongoDatabase database;
+        public readonly IMongoCollection<Book> collection;
+        private readonly IConfiguration _config;
 
-        public MongoDBRepository()
+        public MongoDBRepository(IConfiguration config)
         {
-            client = new MongoClient(_uri);
-            database = client.GetDatabase(_nameDatabase);
+            _config = config;
+            client = new MongoClient(_config["ConnectionStrings:ConnectionStringUri"]);
+            database = client.GetDatabase(_config["ConnectionStrings:Database"]);
+            collection = database.GetCollection<Book>(_config["ConnectionStrings:Collection"]);
+        }
+
+        public IMongoCollection<Book> GetCollection()
+        {
+            return collection; 
         }
     }
 }

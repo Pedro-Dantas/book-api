@@ -12,7 +12,7 @@
         <member name="M:DesafioRestApi.Controllers.BookController.GetBookDetails(System.String)">
             <summary>Obter um livro cadastrado por ID</summary>
              <response code="200">Livro achado!</response>>
-             <response code="500">Ocorreu um erro!</response>>
+             <response code="404">O livro procurado não existe!</response>>
         </member>
         <member name="M:DesafioRestApi.Controllers.BookController.CreateBook(DesafioRestApi.Model.Book)">
             <summary>Adicionar um livro</summary>
@@ -24,12 +24,12 @@
             <summary>Atualizar um livro</summary>
              <response code="201">Livro atualizado com sucesso!</response>>
              <response code="400">Erro ao atualizar um livro!</response>>
-             <response code="500">Ocorreu um erro!</response>> 
+             <response code="404">O livro a ser atualizado não existe!</response>>
         </member>
         <member name="M:DesafioRestApi.Controllers.BookController.DeleteBook(System.String)">
             <summary>Deletar um livro</summary>
              <response code="204">Livro deletado com sucesso!</response>>
-             <response code="500">Ocorreu um erro!</response>>
+             <response code="404">O livro deletado não existe!</response>>
         </member>
     </members>
 </doc>
